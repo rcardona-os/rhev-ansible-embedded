@@ -1,0 +1,18 @@
+---
+# Create a simple VM
+
+- name: Create a simple VM instance
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  
+  tasks:
+    - name: Deploy new VM instance
+      rhevm:
+        name: "demo"
+        user: "{{ rhev.admin.name }}"
+        password: "{{ rhev.admin.pass }}"
+        server: "rhevm01"
+        state: "present"
+        image: "centos7_x64"
+        cluster: "centos"
